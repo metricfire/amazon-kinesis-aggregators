@@ -63,7 +63,7 @@ public class DynamoUtils {
 	/**
 	 * Private interface for creating tables which handles any instances of
 	 * Throttling of the API
-	 * 
+	 *
 	 * @param dynamoClient
 	 * @param dynamoTable
 	 * @return
@@ -99,7 +99,7 @@ public class DynamoUtils {
 	 * Creates a table in Dynamo DB with the requested read and write capacity,
 	 * attributes, key schema and GSI's. This method will block until the table
 	 * is Active in Dynamo DB.
-	 * 
+	 *
 	 * @param dynamoClient
 	 *            Dynamo DB Client to use for connection to Dynamo DB.
 	 * @param dynamoTable
@@ -163,7 +163,7 @@ public class DynamoUtils {
 	/**
 	 * Private interface for describing tables which handles any instances of
 	 * Throttling of the API
-	 * 
+	 *
 	 * @param dynamoClient
 	 * @param dynamoTable
 	 * @return
@@ -196,7 +196,7 @@ public class DynamoUtils {
 
 	/**
 	 * Method which waits for a Dynamo table to enter status 'Active'.
-	 * 
+	 *
 	 * @param dynamoClient
 	 *            Dynamo DB Client to use for connection to Dynamo DB.
 	 * @param dynamoTable
@@ -211,7 +211,7 @@ public class DynamoUtils {
 	/**
 	 * Interface which will block until a dynamo table reaches a specified
 	 * state. Also returns immediately if the object doesn't exist
-	 * 
+	 *
 	 * @param dynamoClient
 	 *            Dynamo DB Client to use for connection to Dynamo DB.
 	 * @param dynamoTable
@@ -260,8 +260,6 @@ public class DynamoUtils {
 		// values, and another for the delete operations
 		final AmazonDynamoDB dynamoClient = new AmazonDynamoDBClient(
 				credentials);
-		// localhost
-		dynamoClient.setEndpoint("http://dynamodb:8000");
 		if (region != null)
 			dynamoClient.setRegion(region);
 		final AmazonDynamoDBAsyncClient deleteCli = new AmazonDynamoDBAsyncClient(
@@ -367,7 +365,7 @@ public class DynamoUtils {
 	 * Method which examines an table which backs an Aggregator, and returns a
 	 * string value which represents the list of attributes in the table. This
 	 * method assumes that all elements in an aggregate table are the same.
-	 * 
+	 *
 	 * @param dynamoClient
 	 *            Dynamo DB Client to use for connection to Dynamo DB.
 	 * @param dynamoTable
@@ -390,7 +388,7 @@ public class DynamoUtils {
 	 * Generate a list of attribute names found in the Aggregator's dynamo
 	 * table. Assumes that all Items in the Aggregator table are of the same
 	 * structure.
-	 * 
+	 *
 	 * @param dynamoClient
 	 *            Dynamo DB Client to use for connection to Dynamo DB.
 	 * @param dynamoTable

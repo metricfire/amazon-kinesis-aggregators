@@ -60,7 +60,7 @@ import com.amazonaws.services.kinesis.model.Record;
  * is aggregated tracking the total value observed for each element of the
  * stream.Data in DynamoDB is aggregated on the basis of the configured
  * TimeHorizon, from granularity of SECOND to FOREVER.
- * 
+ *
  * @author meyersi
  */
 public class StreamAggregator implements IStreamAggregator {
@@ -180,7 +180,7 @@ public class StreamAggregator implements IStreamAggregator {
 
 	/**
 	 * Copy Constructor
-	 * 
+	 *
 	 * @param template
 	 */
 	public StreamAggregator(StreamAggregator template) throws Exception {
@@ -313,13 +313,10 @@ public class StreamAggregator implements IStreamAggregator {
 				this.config.getDynamoDBCredentialsProvider(), clientConfig);
 		if (region != null)
 			this.dynamoClient.setRegion(region);
-		// localhost
-		this.dynamoClient.setEndpoint("http://dynamodb:8000");
 		this.kinesisClient = new AmazonKinesisClient(
 				this.config.getKinesisCredentialsProvider());
 		if (region != null)
 			this.kinesisClient.setRegion(region);
-		this.kinesisClient.setEndpoint("http://kinesis:4567");
 
 		inventory = new InventoryModel(this.dynamoClient);
 
@@ -432,7 +429,7 @@ public class StreamAggregator implements IStreamAggregator {
 	 * Add a single
 	 * {@link com.amazonaws.services.kinesis.aggregators.TimeHorizon} to the
 	 * configuration of the Aggregator
-	 * 
+	 *
 	 * @param horizon
 	 *            TimeHorizon value to be used for aggregated data
 	 * @return
@@ -450,7 +447,7 @@ public class StreamAggregator implements IStreamAggregator {
 	 * Add a set of
 	 * {@link com.amazonaws.services.kinesis.aggregators.TimeHorizon} values to
 	 * the configuration of the Aggregator
-	 * 
+	 *
 	 * @param horizon
 	 *            TimeHorizon value to be used for aggregated data
 	 * @return
@@ -469,7 +466,7 @@ public class StreamAggregator implements IStreamAggregator {
 	 * Add a set of
 	 * {@link com.amazonaws.services.kinesis.aggregators.TimeHorizon} values to
 	 * the configuration of the Aggregator
-	 * 
+	 *
 	 * @param horizon
 	 *            TimeHorizon value to be used for aggregated data
 	 * @return
@@ -487,7 +484,7 @@ public class StreamAggregator implements IStreamAggregator {
 
 	/**
 	 * Set the name of the data store in Dynamo DB for the Aggregated Data
-	 * 
+	 *
 	 * @param tableName
 	 *            The table name to use for data storage
 	 * @return
@@ -501,7 +498,7 @@ public class StreamAggregator implements IStreamAggregator {
 	 * Select an explicit
 	 * {@link com.amazonaws.servies.kinesis.aggregators.AggregatorType} for the
 	 * Aggregator. Default is COUNT
-	 * 
+	 *
 	 * @param t
 	 *            The Aggregator Type to use
 	 * @return
@@ -518,7 +515,7 @@ public class StreamAggregator implements IStreamAggregator {
 	 * stream cannot be deserialised. When setting this value to 'true', then
 	 * the Aggregator stream will be able to deal with bad data that cannot be
 	 * aggregated, and will simply continue working
-	 * 
+	 *
 	 * @param bool
 	 *            Boolean indicating whether to fail when bad data is received
 	 *            on the stream and cannot be deserialised
@@ -532,7 +529,7 @@ public class StreamAggregator implements IStreamAggregator {
 
 	/**
 	 * Should we publish CloudWatch metrics for all captured data?
-	 * 
+	 *
 	 * @param bool
 	 * @return
 	 */
@@ -543,7 +540,7 @@ public class StreamAggregator implements IStreamAggregator {
 
 	/**
 	 * Allow configuring a non-Default data store
-	 * 
+	 *
 	 * @param dataStore
 	 * @return
 	 */
@@ -556,7 +553,7 @@ public class StreamAggregator implements IStreamAggregator {
 
 	/**
 	 * Allow configuring a non-Default metrics emitter
-	 * 
+	 *
 	 * @param metricsEmitter
 	 * @return
 	 */
@@ -569,7 +566,7 @@ public class StreamAggregator implements IStreamAggregator {
 
 	/**
 	 * Allow configuring a non-Default idempotency check
-	 * 
+	 *
 	 * @param idempotencyCheck
 	 * @return
 	 */
@@ -635,7 +632,7 @@ public class StreamAggregator implements IStreamAggregator {
 	/**
 	 * Shut down an aggregator and mark its state as Stopped in the Inventory
 	 * Table
-	 * 
+	 *
 	 * @param flushState
 	 *            Should the aggregator clear it's pending updates prior to
 	 *            shutting down
@@ -800,7 +797,7 @@ public class StreamAggregator implements IStreamAggregator {
 	/**
 	 * Return the stored value for a label and date value at the configured time
 	 * granularity
-	 * 
+	 *
 	 * @param label
 	 *            The Aggregated Label Value to get data for
 	 * @param dateValue
@@ -828,7 +825,7 @@ public class StreamAggregator implements IStreamAggregator {
 	/**
 	 * Query all data in the data store for a given range of date values and
 	 * time horizon
-	 * 
+	 *
 	 * @param dateValue
 	 *            The date to search relative to
 	 * @param h

@@ -104,7 +104,6 @@ public final class InventoryModel {
     public InventoryModel(AmazonDynamoDB dynamoClient) throws Exception {
         this.dynamoClient = dynamoClient;
         // localhost
-        this.dynamoClient.setEndpoint("http://dynamodb:8000");
         init();
     }
 
@@ -157,7 +156,7 @@ public final class InventoryModel {
 
     /**
      * Update the Inventory table with the state of an Aggregator.
-     * 
+     *
      * @param streamName The Kinesis Stream being aggregated.
      * @param applicationName The application name running the aggregator.
      * @param workerId The worker ID which encapsulates an instance of an
@@ -206,7 +205,7 @@ public final class InventoryModel {
 
     /**
      * Method which returns the update information for an Aggregator process.
-     * 
+     *
      * @param streamName The Stream name which is being aggregated.
      * @param applicationName The application which is hosting the aggregator.
      * @param workerId The worker ID which is running an aggregator instance.

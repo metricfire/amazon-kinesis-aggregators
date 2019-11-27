@@ -96,8 +96,6 @@ public final class AggregatorConsumer {
 		c.setProtocol(Protocol.HTTP);
 		this.config = this.config.withDynamoDBClientConfig(c);
 		AmazonDynamoDB dynamoClient = new AmazonDynamoDBClient(this.config.getDynamoDBCredentialsProvider(), c);
-		// localhost
-		dynamoClient.setEndpoint("http://dynamodb:8000");
 
 		Worker.Builder builder = new Worker.Builder();
 		this.config = this.config.withKinesisEndpoint("http://kinesis:4567");
