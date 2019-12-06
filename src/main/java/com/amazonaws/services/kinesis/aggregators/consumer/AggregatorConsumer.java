@@ -98,7 +98,6 @@ public final class AggregatorConsumer {
 		AmazonDynamoDB dynamoClient = new AmazonDynamoDBClient(this.config.getDynamoDBCredentialsProvider(), c);
 
 		Worker.Builder builder = new Worker.Builder();
-		this.config = this.config.withKinesisEndpoint("http://kinesis:4567");
 		worker = builder.recordProcessorFactory(recordProcessorFactory).config(this.config).dynamoDBClient(dynamoClient).build();
 
 		int exitCode = 0;

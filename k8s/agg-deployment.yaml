@@ -12,15 +12,18 @@ spec:
       labels:
         io.kompose.service: agg
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: role
+                operator: In
+                values:
+                - cops
       containers:
-      - image: metricfire/kinesis-agg
-        imagePullPolicy: Never
+      - image: 540840259067.dkr.ecr.us-east-1.amazonaws.com/metricfire/kinesis-aggregator
         name: agg
-        env:
-        - name: AWS_SECRET_ACCESS_KEY
-          value: "secret"
-        - name: AWS_ACCESS_KEY_ID
-          value: "key"
         resources: {}
         volumeMounts:
         - mountPath: /etc/kinesis-aggregators

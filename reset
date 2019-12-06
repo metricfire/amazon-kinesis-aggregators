@@ -1,0 +1,5 @@
+kubectl delete deployment.apps/agg
+aws dynamodb delete-table --table-name kinesis_agg-TestMinutesGrouped --endpoint-url http://localhost:30000
+aws dynamodb delete-table --table-name KinesisAggregatorWorkerState --endpoint-url http://localhost:30000
+aws dynamodb delete-table --table-name kinesis_agg --endpoint-url http://localhost:30000
+aws kinesis delete-stream --endpoint-url="http://localhost:30003" --stream-name="test" --region eu-west-1
